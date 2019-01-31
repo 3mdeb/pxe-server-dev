@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 
 services:
   http-server:
@@ -9,20 +9,21 @@ services:
       - "$PWD/netboot:/usr/local/apache2/htdocs"
 
   nfs-server:
-    build:
-      context: ../../
-      dockerfile: Dockerfile
     image: "erichough/nfs-server"
     container_name: "nfs-server"
     cap_add:
       - SYS_ADMIN
     ports:
     - "2049:2049"
+    - "2049:2049/udp"
+    - "111:111"
+    - "111:111/udp"
+    - "32765:32765"
+    - "32765:32765/udp"
+    - "32767:32767"
+    - "32767:32767/udp"
     volumes:
       - "$PWD/exports.txt:/etc/exports:ro"
-      - "$PWD/nfs-export:/export"
+      - "$PWD/nfs-export:/srv/nfs"
     environment:
       NFS_VERSION: 4.2
-      NFS_DISABLE_VERSION_3: 1
-    security_opt:
-      - apparmor=erichough-nfs

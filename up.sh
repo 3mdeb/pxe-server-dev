@@ -46,16 +46,19 @@ wget https://cloud.3mdeb.com/index.php/s/AQuUdsYkBzO9UJz/download -O core.tar.gz
 wget https://cloud.3mdeb.com/index.php/s/rUZPwRHOjxpSxN4/download -O voyage-0.11.0_amd64.tar.gz
 
 NFS_EXPORT_DIR="./nfs-export"
+mkdir -p $NFS_EXPORT_DIR
 
 # extract debian
 DEBIAN_DIR="$NFS_EXPORT_DIR/debian"
-mkdir -p $DEBIAN_DIR
-tar -xvpzf debian-stable.tar.gz -C $DEBIAN_DIR --numeric-owner
-tar -xvpzf xen.tar.gz -C $DEBIAN_DIR --numeric-owner
+tar -xvpzf debian-stable.tar.gz -C $NFS_EXPORT_DIR --numeric-owner
+mv $NFS_EXPORT_DIR/debian-stable $DEBIAN_DIR
+
+# extract xen
+XEN_DIR="$NFS_DIR/xen"
+tar -xvpzf xen.tar.gz -C $NFS_EXPORT_DIR --numeric-owner
 
 # extract voyage
 VOYAGE_DIR="$NFS_EXPORT_DIR/voyage"
-mkdir -p $VOYAGE_DIR
 tar -xzvf voyage-0.11.0_amd64.tar.gz -C $VOYAGE_DIR
 
 # extract core ??

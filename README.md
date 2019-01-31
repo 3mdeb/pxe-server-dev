@@ -1,6 +1,12 @@
 # pxe-server-dev
 
-Start server:
+## Requirements
+
+```
+sudo modprobe nfs nfsd
+```
+
+## Start
 
 ```
 ./up.sh
