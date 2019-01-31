@@ -1,3 +1,4 @@
-/export         *(rw,fsid=0,no_subtree_check,sync)
-/export/debian  *(rw,nohide,insecure,no_subtree_check,sync)
-/export/voyage  *(rw,nohide,insecure,no_subtree_check,sync)
+/srv/nfs         *(rw,fsid=0,no_subtree_check,sync)
+/srv/nfs/debian  *(rw,nohide,insecure,no_subtree_check,sync)
+/srv/nfs/voyage  *(rw,nohide,insecure,no_subtree_check,sync)
+/srv/nfs/xen     *(rw,nohide,insecure,no_subtree_check,sync)
