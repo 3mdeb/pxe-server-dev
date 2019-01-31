@@ -1,0 +1,3 @@
+/export         *(rw,fsid=0,no_subtree_check,sync)
+/export/debian  *(rw,nohide,insecure,no_subtree_check,sync)
+/export/voyage  *(rw,nohide,insecure,no_subtree_check,sync)
