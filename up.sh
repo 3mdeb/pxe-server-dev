@@ -59,6 +59,7 @@ tar -xvpzf xen.tar.gz -C $NFS_EXPORT_DIR --numeric-owner
 
 # extract voyage
 VOYAGE_DIR="$NFS_EXPORT_DIR/voyage"
+mkdir -p $VOYAGE_DIR
 tar -xzvf voyage-0.11.0_amd64.tar.gz -C $VOYAGE_DIR
 
 # extract core ??
