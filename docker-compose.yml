@@ -9,7 +9,7 @@ services:
       - "$PWD/netboot:/usr/local/apache2/htdocs"
 
   nfs-server:
-    image: "erichough/nfs-server"
+    image: "erichough/nfs-server:2.1.0"
     container_name: "nfs-server"
     cap_add:
       - SYS_ADMIN
