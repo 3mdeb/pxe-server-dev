@@ -31,6 +31,10 @@ else
   exit 1
 fi
 
+git submodule init
+git submodule sync
+git submodule update
+
 # create menu.ipxe file
 cp ./netboot/menu.ipxe.sample ./netboot/menu.ipxe
 sed -i "s/replace_with_ip/$NFS_SRV_IP/g"  ./netboot/menu.ipxe
