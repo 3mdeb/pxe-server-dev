@@ -1,0 +1,3 @@
+[submodule "netboot"]
+	path = netboot
+	url = git@github.com:3mdeb/netboot.git
