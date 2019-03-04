@@ -28,6 +28,7 @@ nfs-server    | ---->
 ```
 
 See [AppArmor configuration](https://github.com/ehough/docker-nfs-server/blob/develop/doc/feature/apparmor.md#apparmor)
+If you are Ubuntu 18 user, install [apparmor](https://launchpad.net/ubuntu/+source/apparmor) manually.
 
 * `111` port already in use:
 
