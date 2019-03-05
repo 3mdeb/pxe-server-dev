@@ -1,4 +1,4 @@
-/srv/nfs         *(rw,fsid=0,no_subtree_check,sync)
-/srv/nfs/debian  *(rw,nohide,insecure,no_subtree_check,sync)
-/srv/nfs/voyage  *(rw,nohide,insecure,no_subtree_check,sync)
-/srv/nfs/xen     *(rw,nohide,insecure,no_subtree_check,sync)
+/srv/nfs        *(rw,sync,fsid=0,no_subtree_check,no_root_squash)
+/srv/nfs/debian *(rw,sync,no_subtree_check,no_root_squash)
+/srv/nfs/xen    *(rw,sync,no_subtree_check,no_root_squash)
+/srv/nfs/voyage *(rw,sync,no_subtree_check,no_root_squash)
