@@ -2,3 +2,4 @@
 /srv/nfs/debian *(rw,sync,no_subtree_check,no_root_squash)
 /srv/nfs/xen    *(rw,sync,no_subtree_check,no_root_squash)
 /srv/nfs/voyage *(rw,sync,no_subtree_check,no_root_squash)
+/srv/nfs/vitro-bmap-rootfs *(rw,sync,no_root_squash,no_subtree_check)
