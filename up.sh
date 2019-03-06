@@ -78,8 +78,8 @@ rm core.tar.gz
 ## -- VITRO (start) -- ##
 
 # Download kernel, devicetree and nfs with bmaptool
-wget https://cloud.3mdeb.com/index.php/s/grjsr3bRKjJmYfJ/download -O vitro-bmap-rootfs.tar.gz
-wget https://cloud.3mdeb.com/index.php/s/9EsWmFa8B95jpy5/download -O tftpboot/zImage
+wget https://cloud.3mdeb.com/index.php/s/tGYSYWSLAenJgJL/download -O vitro-bmap-rootfs.tar.gz
+wget https://cloud.3mdeb.com/index.php/s/kAtd6c9go5QR2AD/download -O tftpboot/zImage
 wget https://cloud.3mdeb.com/index.php/s/iLs5yc3jk5om7iY/download -O tftpboot/zImage-imx6dl-crystal3.dtb
 
 # Extract nfs
