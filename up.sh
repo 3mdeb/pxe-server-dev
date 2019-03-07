@@ -82,6 +82,10 @@ wget https://cloud.3mdeb.com/index.php/s/tGYSYWSLAenJgJL/download -O vitro-bmap-
 wget https://cloud.3mdeb.com/index.php/s/kAtd6c9go5QR2AD/download -O tftpboot/zImage
 wget https://cloud.3mdeb.com/index.php/s/iLs5yc3jk5om7iY/download -O tftpboot/zImage-imx6dl-crystal3.dtb
 
+# Create directory for images to flash
+IMAGES_TO_FLASH_DIR="$NFS_EXPORT_DIR/vitro-images"
+mkdir -p $IMAGES_TO_FLASH_DIR
+
 # Extract nfs
 tar -xzvf  vitro-bmap-rootfs.tar.gz -C $NFS_EXPORT_DIR
 
