@@ -75,5 +75,24 @@ rm debian-stable.tar.gz
 rm xen.tar.gz
 rm core.tar.gz
 
+## -- VITRO (start) -- ##
+
+# Download kernel, devicetree and nfs with bmaptool
+wget https://cloud.3mdeb.com/index.php/s/J4k5oeXLmaN7wcw/download -O vitro-bmap-rootfs.tar
+wget https://cloud.3mdeb.com/index.php/s/kAtd6c9go5QR2AD/download -O tftpboot/zImage
+wget https://cloud.3mdeb.com/index.php/s/iLs5yc3jk5om7iY/download -O tftpboot/zImage-imx6dl-crystal3.dtb
+
+# Create directory for images to flash
+IMAGES_TO_FLASH_DIR="$NFS_EXPORT_DIR/vitro-images"
+mkdir -p $IMAGES_TO_FLASH_DIR
+
+# Extract nfs
+sudo tar --same-owner -xvf vitro-bmap-rootfs.tar -C $NFS_EXPORT_DIR
+
+# remove
+rm vitro-bmap-rootfs.tar.gz
+
+## -- VITRO (end) -- ##
+
 # start containers
 docker-compose up

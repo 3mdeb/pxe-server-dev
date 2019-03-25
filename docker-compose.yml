@@ -8,6 +8,13 @@ services:
     volumes:
       - "$PWD/netboot:/usr/local/apache2/htdocs"
 
+  tftp-server:
+    image: 'vimagick/tftpd:latest'
+    ports:
+      - '69:69/udp'
+    volumes:
+      - "$PWD/tftpboot:/tftpboot"
+
   nfs-server:
     image: "erichough/nfs-server:2.1.0"
     container_name: "nfs-server"
