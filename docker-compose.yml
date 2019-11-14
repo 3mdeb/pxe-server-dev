@@ -1,12 +1,16 @@
 version: '2'
 
 services:
-  http-server:
+  https-server:
     image: 'httpd:2.4.38'
     ports:
       - '8000:80'
+      - '443:443'
     volumes:
       - "$PWD/netboot:/usr/local/apache2/htdocs"
+      - "$PWD/server.crt:/usr/local/apache2/conf/server.crt:ro"
+      - "$PWD/server.key:/usr/local/apache2/conf/server.key:ro"
+      - "$PWD/httpd.conf:/usr/local/apache2/conf/httpd.conf"
 
   nfs-server:
     image: "erichough/nfs-server:2.1.0"
