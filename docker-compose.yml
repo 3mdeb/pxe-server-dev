@@ -1,8 +1,8 @@
-version: '2'
+version: '3.8'
 
 services:
   https-server:
-    image: 'httpd:2.4.38'
+    image: 'httpd:2.4.46'
     ports:
       - '8000:80'
       - '443:443'
@@ -13,7 +13,7 @@ services:
       - "$PWD/httpd.conf:/usr/local/apache2/conf/httpd.conf"
 
   nfs-server:
-    image: "erichough/nfs-server:2.1.0"
+    image: "erichough/nfs-server:2.2.1"
     container_name: "nfs-server"
     cap_add:
       - SYS_ADMIN
