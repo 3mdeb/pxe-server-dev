@@ -1,0 +1,40 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - master
+      - develop
+      - actions-ci
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: self-hosted
+    steps:
+      - name: Set env to dev
+        if: endsWith(github.ref, 'develop') || endsWith(github.ref, 'actions-ci')
+        run: |
+          echo "SSH_PASSWORD=${SSH_PASSWORD_DEV}" >> $GITHUB_ENV
+          echo "SSH_USER=${SSH_USER_DEV}" >> $GITHUB_ENV
+          echo "SSH_IP=${SSH_IP_DEV}" >> $GITHUB_ENV
+      - name: Set env to prod
+        if: endsWith(github.ref, 'master')
+        run: |
+          echo "SSH_PASSWORD=${SSH_PASSWORD_PROD}" >> $GITHUB_ENV
+          echo "SSH_USER=${SSH_USER_PROD}" >> $GITHUB_ENV
+          echo "SSH_IP=${SSH_IP_PROD}" >> $GITHUB_ENV
+
+      - name: Turn off old instance
+        run: |
+          sshpass -p ${SSH_PASSWORD} ssh ${SSH_USER}@${SSH_IP} \
+          "cd pxe-server-dev && sudo apparmor_parser -R apparmor && docker-compose down"
+      - name: Checkout and update files
+        run: |
+          sshpass -p ${SSH_PASSWORD} ssh ${SSH_USER}@${SSH_IP} \
+          "cd pxe-server-dev && git checkout ${GITHUB_SHA} && ./update.sh"
+      - name: Prepare system and start new instance
+        run: |
+          sshpass -p ${SSH_PASSWORD} ssh ${SSH_USER}@${SSH_IP} \
+          "cd pxe-server-dev && sudo ./prepare_system.sh && docker-compose up -d"
+
+
