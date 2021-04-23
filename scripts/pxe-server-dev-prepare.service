@@ -1,0 +1,11 @@
+[Unit]
+Description=Prepare modules and apparmor for pxe-server-dev
+
+[Service]
+Type=simple
+WorkingDirectory=<PXE-SERVER-DEV-DIRECTORY>/scripts/
+ExecStart=bash -c "./prepare_system.sh"
+
+[Install]
+WantedBy=multi-user.target
+
